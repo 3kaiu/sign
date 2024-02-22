@@ -20,4 +20,4 @@ jobs:
       - name: Run sign.js
         run: node sign.js
         env:
-          COOKIE: ${{ secrets.Cookie }} # 使用 COOKIE Secret
+          COOKIE: ${{ secrets.COOKIE }} # 使用 COOKIE Secret
