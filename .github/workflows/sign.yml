@@ -18,7 +18,8 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
-      - name: '瑞客论坛'
+      - name: 'signs'
         run: node sign.js
         env:
           RUIKE_COOKIE: ${{ secrets.RUIKE_COOKIE }}
+          V2EX_COOKIE: ${{secrets.V2EX_COOKIE}}
