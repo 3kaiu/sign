@@ -13,14 +13,15 @@ async function Sign_ruike() {
         Cookie: cookie // 设置 Cookie 头部
       }
     })
-    if (response.data.includes(`alt="今日已签"`)) {
-      console.log(`${title}🟢签到成功`)
-    } else if (response.data.includes('CDATA[今日已签]')) {
-      console.log(`${title}🟢重复签到`)
-    } else {
-      console.log(`${title}💢未知错误，请查看日志响应信息`)
-      console.warn(`${title}💢未知错误 响应信息: ${response.data}`)
-    }
+    console.log(response)
+    // if (response.data.includes(`alt="今日已签"`)) {
+    //   console.log(`${title}🟢签到成功`)
+    // } else if (response.data.includes('CDATA[今日已签]')) {
+    //   console.log(`${title}🟢重复签到`)
+    // } else {
+    //   console.log(`${title}💢未知错误，请查看日志响应信息`)
+    //   console.warn(`${title}💢未知错误 响应信息: ${response.data}`)
+    // }
   } catch (error) {
     console.error(`${title}💥请求失败: ${error.message}`)
   }
