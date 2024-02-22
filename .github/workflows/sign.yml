@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 0 * * *' # 每天 0 点触发
   workflow_dispatch: # 手动触发器
+  push:
 
 jobs:
   sign:
@@ -17,7 +18,9 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
+        env:
+          COOKIE: ${{ secrets.COOKIE }} # 使用 COOKIE Secret
       - name: Run sign.js
         run: node sign.js
         env:
-          COOKIE: ${{ secrets.COOKIE }} # 使用 COOKIE Secret
+          COOKIE: ${{ secrets.COOKIE }}
