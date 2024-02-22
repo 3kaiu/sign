@@ -5,7 +5,7 @@ async function Sign_ruike() {
     'https://www.ruike1.com/k_misign-sign.html?operation=qiandao&format=global_usernav_extra&formhash=f9093311&inajax=1&ajaxtarget=k_misign_topb'
   const title = '瑞客论坛'
 
-  const cookie = process.env.COOKIE // 从 Secrets 中读取 Cookie
+  const cookie = process.env.RUIKE_COOKIE // 从 Secrets 中读取 Cookie
 
   try {
     const response = await axios.get(signUrl, {

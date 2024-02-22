@@ -10,17 +10,13 @@ jobs:
   sign:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
       - name: Install dependencies
         run: npm install
-        env:
-          COOKIE: ${{ secrets.COOKIE }} # 使用 COOKIE Secret
-      - name: Run sign.js
+      - name: '瑞客论坛'
         run: node sign.js
         env:
-          COOKIE: ${{ secrets.COOKIE }}
+          RUIKE_COOKIE: ${{ secrets.RUIKE_COOKIE }}
