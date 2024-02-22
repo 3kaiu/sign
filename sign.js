@@ -14,6 +14,7 @@ async function Sign_ruike() {
         Cookie: cookie // 设置 Cookie 头部
       }
     })
+    console.log(response, '----')
     if (response.data.includes(`alt="今日已签"`)) {
       console.log(`${title}🟢签到成功`)
     } else if (response.data.includes('CDATA[今日已签]')) {
