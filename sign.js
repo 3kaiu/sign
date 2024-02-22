@@ -11,7 +11,7 @@ async function Sign_ruike() {
     const response = await axios.get(signUrl, {
       headers: {
         Cookie: cookie, // 设置 Cookie 头部
-        'Content-Type': 'application/xml; charset=GBK'
+        'Content-Type': 'text/html; charset=gbk'
       }
     })
     if (response.data.includes(`alt="今日已签"`)) {
