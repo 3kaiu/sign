@@ -7,6 +7,7 @@ async function Sign_ruike() {
 
   const cookie = process.env.COOKIE // 从 Secrets 中读取 Cookie
   console.log(cookie, '-----')
+  console.log(process.env)
   try {
     const response = await axios.get(signUrl, {
       headers: {
