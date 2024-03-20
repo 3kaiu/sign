@@ -10,7 +10,7 @@ const puppeteer = require('puppeteer')
 
 	// 输入账号密码并点击登录
 	await page.type('#ls_username', 'wennn')
-	await page.type('#ls_password', '123456')
+	await page.type('#ls_password', '12345678')
 	await page.click('button[type="submit"].pn.vm')
 
 	// 监听页面的网络请求和响应
