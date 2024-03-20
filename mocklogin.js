@@ -20,10 +20,11 @@ const puppeteer = require('puppeteer')
 			// 处理响应
 			const responseBody = await response.text()
 			console.log('Response Body:', responseBody)
-			await page.waitForSelector('#fx_checkin_b')
-			await page.click('#fx_checkin_b')
 		}
 	})
+
+	await page.waitForSelector('#fx_checkin_b')
+	await page.click('#fx_checkin_b')
 	// 获取签到结果
 	const result = await page.evaluate(() => {
 		return document.querySelector('#fx_checkin_b').textContent
