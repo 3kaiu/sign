@@ -23,7 +23,7 @@ const puppeteer = require('puppeteer')
 	await page.click('#fx_checkin_b')
 
 	// 在点击按钮后，等待一段时间以确保页面的某些操作完成
-	await page.waitForTimeout(2000)
+	await page.waitForNavigation({ timeout: 60000 })
 
 	// 获取签到结果
 	const result = await page.evaluate(() => {
