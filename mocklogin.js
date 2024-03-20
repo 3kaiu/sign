@@ -13,16 +13,13 @@ const puppeteer = require('puppeteer')
 	await page.type('#ls_password', '123456')
 	await page.click('button[type="submit"].pn.vm')
 
-	// 等待登录成功后的页面加载
 	// 监听页面的网络请求和响应
 	page.on('response', async response => {
-		// 判断是否是登录请求的响应
-		if (response.url().includes('k_misign-sign')) {
-			// 获取响应内容
+		console.log('Response URL:', response.url())
+		if (response.url().includes('k_misign-sign.html')) {
+			// 处理响应
 			const responseBody = await response.text()
-			console.log('登录请求的响应:', responseBody)
-
-			// 在这里处理登录请求的响应，例如解析响应内容并判断登录是否成功
+			console.log('Response Body:', responseBody)
 		}
 	})
 
