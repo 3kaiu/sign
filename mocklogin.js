@@ -14,7 +14,7 @@ const puppeteer = require('puppeteer')
 	await page.click('button[type="submit"].pn.vm')
 
 	// 等待登录成功后的页面加载
-	await page.waitForNavigation({ timeout: 60000 })
+	// await page.waitForNavigation({ timeout: 60000 })
 
 	// 等待 id 为 fx_checkin_b 的按钮出现
 	await page.waitForSelector('#fx_checkin_b')
