@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: 'signs'
-        run: node sign.js
+        run: node mocklogin.js
         env:
           RUIKE_COOKIE: ${{ secrets.RUIKE_COOKIE }}
           V2EX_COOKIE: ${{secrets.V2EX_COOKIE}}
