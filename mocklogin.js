@@ -16,21 +16,19 @@ const puppeteer = require('puppeteer')
 	// 监听页面的网络请求和响应
 	page.on('response', async response => {
 		console.log('Response URL:', response.url())
-		if (response.url().includes('login')) {
+		if (response.url().includes('login' || 'sign')) {
 			// 处理响应
 			const responseBody = await response.text()
 			console.log('Response Body:', responseBody, '============')
-
-			await page.waitForSelector('#fx_checkin_b')
-			await page.click('#fx_checkin_b')
-			// 获取签到结果
-			const result = await page.evaluate(() => {
-				return document.querySelector('#fx_checkin_b').textContent
-			})
-
-			console.log('签到结果:', result)
 		}
 	})
+	await page.waitForSelector('#fx_checkin_b')
+	await page.click('#fx_checkin_b')
+	// 获取签到结果
+	const result = await page.evaluate(() => {
+		return document.querySelector('#fx_checkin_b').textContent
+	})
 
+	console.log('签到结果:', result)
 	await browser.close()
 })()
