@@ -22,16 +22,14 @@ const puppeteer = require('puppeteer')
 			console.log('Response Body:', responseBody)
 			await page.waitForSelector('#fx_checkin_b')
 			await page.click('#fx_checkin_b')
-
-			// 获取签到结果
-			const result = await page.evaluate(() => {
-				return document.querySelector('#fx_checkin_b').textContent
-			})
-
-			console.log('签到结果:', result)
 		}
 	})
+	// 获取签到结果
+	const result = await page.evaluate(() => {
+		return document.querySelector('#fx_checkin_b').textContent
+	})
 
+	console.log('签到结果:', result)
 
 	await browser.close()
 })()
