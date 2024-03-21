@@ -15,11 +15,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '18'
       - name: Install dependencies
         run: npm install
       - name: 'signs'
-        run: node index.js
+        run: node sign.js
         env:
           RUIKE_COOKIE: ${{ secrets.RUIKE_COOKIE }}
           V2EX_COOKIE: ${{secrets.V2EX_COOKIE}}
