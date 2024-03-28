@@ -32,6 +32,9 @@ const puppeteer = require('puppeteer')
 		document.getElementById('JD_sign').click()
 	})
 
+	// 等待页面跳转完成
+	await page.waitForNavigation({ waitUntil: 'networkidle0' })
+
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
 	})
