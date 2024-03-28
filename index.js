@@ -29,16 +29,20 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
-		const JD_sign = document.getElementById('JD_sign')
+		const JD_sign = document.querySelector('a#JD_sign')
 		console.log(JD_sign)
 		if (JD_sign) {
-			// 手动触发 onclick 事件
-			JD_sign.click()
-			// 执行 onclick 中的函数
-			ajaxget(JD_sign.href, JD_sign.id, '', '', '', 'window.location.reload();')
-			console.log('zhixing')
+			// 创建一个鼠标事件
+			const event = new MouseEvent('click', {
+				view: window,
+				bubbles: true,
+				cancelable: true
+			})
+			// 触发点击事件
+			JD_sign.dispatchEvent(event)
 		}
 	})
+
 	await page.waitForSelector('body')
 
 	const result = await page.evaluate(() => {
