@@ -31,6 +31,7 @@ const puppeteer = require('puppeteer')
 	await page.evaluate(() => {
 		document.querySelector('#wp div.qdleft a#JD_sign').click()
 	})
+	await page.goto('https://www.ruike1.com/k_misign-sign.html')
 	await page.waitForSelector('body')
 
 	const result = await page.evaluate(() => {
