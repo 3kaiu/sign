@@ -27,7 +27,7 @@ const puppeteer = require('puppeteer')
 		document.querySelector('#JD_sign').click()
 	})
 
-	await page.waitForSelector('#fx_checkin_b')
+	// await page.waitForSelector('#fx_checkin_b')
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
