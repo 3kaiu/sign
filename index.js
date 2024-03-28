@@ -29,7 +29,7 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
-		document.querySelector('#wp div.qdleft > a').click()
+		document.querySelector('#k_misign_topb a img').click()
 	})
 
 	const result = await page.evaluate(() => {
