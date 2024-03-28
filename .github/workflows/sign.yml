@@ -11,21 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Set up Go
-        uses: actions/setup-go@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          go-version: '1.17'
+          node-version: '16'
 
       - name: Install dependencies
-        run: |
-          go get -u github.com/chromedp/chromedp
+        run: npm install puppeteer
 
-      - name: Run Chrome Headless Sign In
+      - name: Run Puppeteer script
         run: |
-          go run main.go USERNAME PASSWORD
+          node index.js ${{ secrets.USERNAME }} ${{ secrets.PASSWORD }}
         env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
+          CHROMIUM_PATH: /usr/bin/chromium-browser
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}

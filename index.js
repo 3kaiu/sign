@@ -1,34 +1,38 @@
 const puppeteer = require('puppeteer')
 
 ;(async () => {
-	const browser = await puppeteer.launch()
+	const browser = await puppeteer.launch({ headless: true })
 	const page = await browser.newPage()
-	await page.goto('http://www.ruike1.com')
 
-	// 等待页面加载完毕
-	await page.waitForSelector('#ls_username')
+	await page.goto('https://www.ruike1.com/')
+	await page.waitForSelector('body')
 
-	// 输入账号密码并点击登录
-	await page.type('#ls_username', 'wennn')
-	await page.type('#ls_password', '12345678')
-	await page.click('button[type="submit"].pn.vm')
+	const username = process.argv[2]
+	const password = process.argv[3]
 
-	// 监听页面的网络请求和响应
-	page.on('response', async response => {
-		console.log('Response URL:', response.url())
-		if (response.url().includes('login' || 'sign')) {
-			// 处理响应
-			const responseBody = await response.text()
-			console.log('Response Body:', responseBody, '============')
-		}
+	await page.type('#ls_username', username)
+	await page.type('#ls_password', password)
+
+	await page.evaluate(() => {
+		document
+			.querySelector(
+				'#lsform > div > div.y.pns > table > tbody > tr:nth-child(2) > td.fastlg_l > button'
+			)
+			.click()
 	})
-	await page.waitForSelector('#fx_checkin_b')
-	await page.click('#fx_checkin_b')
-	// 获取签到结果
+
+	await page.waitForTimeout(1000)
+
+	await page.goto('https://www.ruike1.com/k_misign-sign.html')
+	await page.waitForSelector('body')
+
 	const result = await page.evaluate(() => {
-		return document.querySelector('#fx_checkin_b').textContent
+		return document.querySelector(
+			'#wp > div.wp.cl > div.lineB.cl > div.qdleft > div > div.font'
+		).innerText
 	})
 
-	console.log('签到结果:', result)
+	console.log(`签到结果：${result}`)
+
 	await browser.close()
 })()
