@@ -29,18 +29,7 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
-		const JD_sign = document.querySelector('#wp div.qdleft > a')
-		console.log(JD_sign)
-		if (JD_sign) {
-			// 创建一个鼠标事件
-			const event = new MouseEvent('click', {
-				view: window,
-				bubbles: true,
-				cancelable: true
-			})
-			// 触发点击事件
-			JD_sign.dispatchEvent(event)
-		}
+		document.querySelector('#wp div.qdleft > a').click()
 	})
 
 	const result = await page.evaluate(() => {
