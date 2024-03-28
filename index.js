@@ -29,7 +29,7 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
-		const JD_sign = document.querySelector('a#JD_sign')
+		const JD_sign = document.querySelector('#wp div.qdleft > a')
 		console.log(JD_sign)
 		if (JD_sign) {
 			// 创建一个鼠标事件
@@ -42,8 +42,6 @@ const puppeteer = require('puppeteer')
 			JD_sign.dispatchEvent(event)
 		}
 	})
-
-	await page.waitForSelector('body')
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
