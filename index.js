@@ -23,11 +23,15 @@ const puppeteer = require('puppeteer')
 
 	await page.goto('https://www.ruike1.com/k_misign-sign.html')
 	await page.waitForSelector('body')
-	await page.evaluate(() => {
-		document.querySelector('#JD_sign').click()
+	const result1 = await page.evaluate(() => {
+		return document.querySelector('#wp div.paiming.cl .font').innerHTML
 	})
+	console.log(`登陆结果：${result1}`)
 
-	// await page.waitForSelector('#fx_checkin_b')
+	await page.evaluate(() => {
+		document.querySelector('#wp div.qdleft a#JD_sign').click()
+	})
+	await page.waitForSelector('body')
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
