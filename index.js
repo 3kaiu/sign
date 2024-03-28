@@ -26,6 +26,7 @@ const puppeteer = require('puppeteer')
 	await page.evaluate(() => {
 		document.querySelector('#JD_sign').click()
 	})
+	await page.waitForSelector('body')
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#fx_checkin_b').alt
