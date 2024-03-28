@@ -21,14 +21,14 @@ const puppeteer = require('puppeteer')
 			.click()
 	})
 
-	// await page.waitForTimeout(1000) // 等待一秒钟
-	console.log(page)
-
 	await page.goto('https://www.ruike1.com/k_misign-sign.html')
 	await page.waitForSelector('body')
+	await page.evaluate(() => {
+		document.querySelector('#JD_sign').click()
+	})
 
 	const result = await page.evaluate(() => {
-		return document.querySelector('#fx_checkin_b').innerText
+		return document.querySelector('#fx_checkin_b').alt
 	})
 
 	console.log(`签到结果：${result}`)
