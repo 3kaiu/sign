@@ -14,7 +14,11 @@ const puppeteer = require('puppeteer')
 	await page.type('#ls_password', password)
 
 	await page.evaluate(() => {
-		document.querySelector('#fx_checkin_b').click()
+		document
+			.querySelector(
+				'#lsform > div > div.y.pns > table > tbody > tr:nth-child(2) > td.fastlg_l > button'
+			)
+			.click()
 	})
 
 	// await page.waitForTimeout(1000) // 等待一秒钟
