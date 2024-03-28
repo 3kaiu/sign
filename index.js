@@ -29,10 +29,10 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
-		document.querySelector('#wp div.qdleft>a.btn').click()
+		document.querySelector('#wp div.qdleft > a.btn').click()
 	})
-	await page.goto('https://www.ruike1.com/k_misign-sign.html')
-	await page.waitForSelector('body')
+
+	console.log(document.querySelector('#wp div.qdleft').innerHTML)
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
