@@ -21,7 +21,7 @@ const puppeteer = require('puppeteer')
 			.click()
 	})
 
-	await page.waitForTimeout(1000)
+	await page.waitForTimeout(1000) // 等待一秒钟
 
 	await page.goto('https://www.ruike1.com/k_misign-sign.html')
 	await page.waitForSelector('body')
