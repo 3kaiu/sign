@@ -29,12 +29,15 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
-		document.querySelector('#wp div.qdleft > a.btn').click()
+		document.querySelector('#JD_sign').click()
 	})
-	const result2 = await page.evaluate(() => {
-		return document.querySelector('#wp div.qdleft').innerHTML
-	})
-	console.log(result2)
+
+	await page.waitForNavigation() // 等待页面加载完成
+
+	// const result2 = await page.evaluate(() => {
+	// 	return document.querySelector('#wp div.qdleft').innerHTML
+	// })
+	// console.log(result2)
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
