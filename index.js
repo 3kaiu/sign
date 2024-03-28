@@ -28,12 +28,7 @@ const puppeteer = require('puppeteer')
 	})
 	console.log(`登陆结果：${result1}`)
 
-	await page.evaluate(() => {
-		document.getElementById('JD_sign').click()
-	})
-
-	// 等待页面跳转完成
-	await page.waitForNavigation({ waitUntil: 'networkidle0' })
+	await page.click('#JD_sign')
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
