@@ -28,7 +28,15 @@ const puppeteer = require('puppeteer')
 	})
 	console.log(`登陆结果：${result1}`)
 
-	await page.click('#JD_sign')
+	await page.evaluate(() => {
+		const JD_sign = document.getElementById('JD_sign')
+		if (JD_sign) {
+			// 手动触发 onclick 事件
+			JD_sign.click()
+			// 执行 onclick 中的函数
+			ajaxget(JD_sign.href, JD_sign.id, '', '', '', 'window.location.reload();')
+		}
+	})
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
