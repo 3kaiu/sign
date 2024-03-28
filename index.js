@@ -28,7 +28,7 @@ const puppeteer = require('puppeteer')
 	})
 	console.log(`登陆结果：${result1}`)
 
-	await page.click('#k_misign_topb #fx_checkin_b')
+	await page.click('#k_misign_topb a')
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
