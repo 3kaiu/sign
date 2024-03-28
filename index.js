@@ -29,10 +29,9 @@ const puppeteer = require('puppeteer')
 	console.log(`登陆结果：${result1}`)
 
 	await page.evaluate(() => {
+		console.log(document.querySelector('#wp div.qdleft').innerHTML)
 		document.querySelector('#wp div.qdleft > a.btn').click()
 	})
-
-	console.log(document.querySelector('#wp div.qdleft').innerHTML)
 
 	const result = await page.evaluate(() => {
 		return document.querySelector('#wp div.paiming.cl .font').innerHTML
