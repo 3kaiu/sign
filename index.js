@@ -14,11 +14,7 @@ const puppeteer = require('puppeteer')
 	await page.type('#ls_password', password)
 
 	await page.evaluate(() => {
-		document
-			.querySelector(
-				'#lsform > div > div.y.pns > table > tbody > tr:nth-child(2) > td.fastlg_l > button'
-			)
-			.click()
+		document.querySelector('#fx_checkin_b').click()
 	})
 
 	// await page.waitForTimeout(1000) // 等待一秒钟
@@ -28,9 +24,7 @@ const puppeteer = require('puppeteer')
 	await page.waitForSelector('body')
 
 	const result = await page.evaluate(() => {
-		return document.querySelector(
-			'#wp > div.wp.cl > div.lineB.cl > div.qdleft > div > div.font'
-		).innerText
+		return document.querySelector('#fx_checkin_b').innerText
 	})
 
 	console.log(`签到结果：${result}`)
