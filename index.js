@@ -26,10 +26,11 @@ const puppeteer = require('puppeteer')
 	await page.evaluate(() => {
 		document.querySelector('#JD_sign').click()
 	})
-	await page.waitForSelector('body')
+
+	await page.waitForSelector('#fx_checkin_b')
 
 	const result = await page.evaluate(() => {
-		return document.querySelector('#fx_checkin_b').alt
+		return document.querySelector('#wp div.paiming.cl .font').innerHTML
 	})
 
 	console.log(`签到结果：${result}`)
